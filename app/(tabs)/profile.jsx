@@ -7,10 +7,13 @@ import useAppwrite from "../../lib/useAppwrite";
 import { getUserPosts, signOut } from "../../lib/appwrite";
 import { useGlobalContext } from "../../context/GlobalProvider";
 import { EmptyState, InfoBox, VideoCard } from "../../components";
+import { useState } from "react";
 
 const Profile = () => {
   const { user, setUser, setIsLogged } = useGlobalContext();
-  const { data: posts } = useAppwrite(() => getUserPosts(user.$id));
+  // const { data: posts } = useAppwrite(() => getUserPosts(user.$id));
+
+  const [posts, setPosts] = useState();
 
   const logout = async () => {
     await signOut();
@@ -69,7 +72,8 @@ const Profile = () => {
 
             <View className="mt-5 flex flex-row">
               <InfoBox
-                title={posts.length || 0}
+                // title={posts.length || 0}
+                title={0}
                 subtitle="Posts"
                 titleStyles="text-xl"
                 containerStyles="mr-10"
