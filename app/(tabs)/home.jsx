@@ -64,7 +64,7 @@ const Home = () => {
                 </Text>
 
                 <Text className="text-2xl font-psemibold text-white">
-                  Harsh
+                  Dude!
                 </Text>
               </View>
 

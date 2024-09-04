@@ -2,7 +2,7 @@ import { useState } from "react";
 import { ResizeMode, Video } from "expo-av";
 import { View, Text, TouchableOpacity, Image } from "react-native";
 
-import { icons,images } from "../constants";
+import { icons, images } from "../constants";
 
 const VideoCard = ({ title, creator, avatar, thumbnail, video, image }) => {
   const [play, setPlay] = useState(false);
@@ -35,9 +35,9 @@ const VideoCard = ({ title, creator, avatar, thumbnail, video, image }) => {
           </View>
         </View>
 
-        <View className="pt-2">
+        <TouchableOpacity className="pt-2">
           <Image source={icons.menu} className="w-5 h-5" resizeMode="contain" />
-        </View>
+        </TouchableOpacity>
       </View>
 
       {play ? (
