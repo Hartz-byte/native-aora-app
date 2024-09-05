@@ -18,10 +18,10 @@ import { useState } from "react";
 
 const Profile = () => {
   const { user, setUser, setIsLogged } = useGlobalContext();
-  // const { data: posts } = useAppwrite(() => getUserPosts(user.$id));
+  const { data: posts } = useAppwrite(() => getUserPosts(user.$id));
   const { data: latestPosts } = useAppwrite(getLatestPosts);
 
-  // const [posts, setPosts] = useState();
+  const [post, setPost] = useState(user);
 
   const logout = async () => {
     await signOut();
@@ -30,6 +30,8 @@ const Profile = () => {
 
     router.replace("/sign-in");
   };
+
+  console.log(post);
 
   return (
     <SafeAreaView className="bg-primary h-full">
