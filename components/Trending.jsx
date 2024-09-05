@@ -12,7 +12,7 @@ import { icons } from "../constants";
 
 const zoomIn = {
   0: {
-    scale: 0.8,
+    scale: 0.9,
   },
   1: {
     scale: 1,
@@ -28,13 +28,13 @@ const zoomOut = {
   },
 };
 
-const TrendingItem = ({ activeItem, item, index }) => {
+const TrendingItem = ({ activeItem, item }) => {
   const [play, setPlay] = useState(false);
 
   return (
     <Animatable.View
       className="mr-5"
-      animation={activeItem === index ? zoomIn : zoomOut}
+      animation={activeItem === item.$id ? zoomIn : zoomOut}
       duration={500}
     >
       {play ? (
@@ -54,21 +54,21 @@ const TrendingItem = ({ activeItem, item, index }) => {
         <TouchableOpacity
           className="relative flex justify-center items-center"
           activeOpacity={0.7}
-          // onPress={() => setPlay(true)}
+          onPress={() => setPlay(true)}
         >
-          {/* <ImageBackground
+          <ImageBackground
             source={{
               uri: item.thumbnail,
             }}
             className="w-52 h-72 rounded-[33px] my-5 overflow-hidden shadow-lg shadow-black/40"
             resizeMode="cover"
-          /> */}
+          />
 
-          <Image
+          {/* <Image
             source={item}
             className="w-52 h-72 rounded-[33px] mt-3 bg-white/10"
             resizeMode="cover"
-          />
+          /> */}
 
           <Image
             source={icons.play}
@@ -95,8 +95,8 @@ const Trending = ({ posts }) => {
       data={posts}
       horizontal
       keyExtractor={(item) => item.$id}
-      renderItem={({ item, index }) => (
-        <TrendingItem activeItem={activeItem} item={item} index={index} />
+      renderItem={({ item }) => (
+        <TrendingItem activeItem={activeItem} item={item} />
       )}
       onViewableItemsChanged={viewableItemsChanged}
       viewabilityConfig={{

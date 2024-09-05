@@ -19,16 +19,16 @@ const Search = () => {
     <SafeAreaView className="bg-primary h-full">
       <FlatList
         data={posts}
-        keyExtractor={(item, index) => index}
-        // renderItem={({ item }) => (
-        //   <VideoCard
-        //     title={item.title}
-        //     thumbnail={item.thumbnail}
-        //     video={item.video}
-        //     creator={item.creator.username}
-        //     avatar={item.creator.avatar}
-        //   />
-        // )}
+        keyExtractor={(item) => item.$id}
+        renderItem={({ item }) => (
+          <VideoCard
+            title={item.title}
+            thumbnail={item.thumbnail}
+            video={item.video}
+            creator={item.creator.username}
+            avatar={item.creator.avatar}
+          />
+        )}
         ListHeaderComponent={() => (
           <>
             <View className="flex my-6 px-4">
@@ -40,8 +40,7 @@ const Search = () => {
               </Text>
 
               <View className="mt-6 mb-8">
-                {/* <SearchInput initialQuery={query} refetch={refetch} /> */}
-                <SearchInput initialQuery={query} />
+                <SearchInput initialQuery={query} refetch={refetch} />
               </View>
             </View>
           </>

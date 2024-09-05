@@ -2,7 +2,7 @@ import { useState } from "react";
 import { ResizeMode, Video } from "expo-av";
 import { View, Text, TouchableOpacity, Image } from "react-native";
 
-import { icons, images } from "../constants";
+import { icons } from "../constants";
 
 const VideoCard = ({ title, creator, avatar, thumbnail, video, image }) => {
   const [play, setPlay] = useState(false);
@@ -13,7 +13,8 @@ const VideoCard = ({ title, creator, avatar, thumbnail, video, image }) => {
         <View className="flex justify-center items-center flex-row flex-1">
           <View className="w-[46px] h-[46px] rounded-lg border border-secondary flex justify-center items-center p-0.5">
             <Image
-              source={images.empty}
+              // source={{ uri: avatar }}
+              source={icons.profile}
               className="w-full h-full rounded-lg"
               resizeMode="cover"
             />
@@ -59,6 +60,12 @@ const VideoCard = ({ title, creator, avatar, thumbnail, video, image }) => {
           // onPress={() => setPlay(true)}
           className="w-full h-60 rounded-xl mt-3 relative flex justify-center items-center"
         >
+          {/* <Image
+            source={{ uri: thumbnail }}
+            className="w-full h-full rounded-xl mt-3"
+            resizeMode="cover"
+          /> */}
+
           <Image
             source={image}
             className="w-full h-full rounded-xl mt-3"
